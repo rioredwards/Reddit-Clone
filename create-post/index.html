@@ -36,7 +36,7 @@
             <p class="title">blueit</p>
             <nav>
                 <a href="../">Home</a>
-                <a id="sign-out-link" href="../auth">Sign Out</a>
+                <a id="sign-out-link" href="/">Sign Out</a>
             </nav>
         </header>
 
@@ -62,7 +62,6 @@
                         id="image-input"
                         name="image"
                         type="file"
-                        required
                         placeholder="upload an image..."
                     />
                 </label>
@@ -73,9 +72,8 @@
                     src="../assets/photo-placeholder.png"
                 />
 
-                <button>Add Post</button>
-
-                <p id="error-display"></p>
+                <button id="add-post">Add Post</button>
+                <p class="error" id="error"></p>
             </form>
         </main>
 
