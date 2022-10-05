@@ -73,20 +73,3 @@ form button:disabled {
     display: flex;
     gap: 1rem;
 }
-
-input,
-button {
-    padding: 0.2rem;
-    border-radius: 0.5rem;
-    border: 2px solid rgba(138, 138, 138, 0.494);
-}
-
-input {
-    width: 15rem;
-}
-
-form input[type='file'] {
-    padding: 0;
-    border-radius: 0;
-    border: none;
-}

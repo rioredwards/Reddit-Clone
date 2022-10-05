@@ -5,7 +5,7 @@ import { getPosts } from './fetch-utils.js';
 import { renderPost } from './render-utils.js';
 
 /* Get DOM Elements */
-const searchForm = document.getElementById('search-form');
+// const searchForm = document.getElementById('search-form');
 const errorDisplay = document.getElementById('error');
 const postList = document.getElementById('post-list');
 
