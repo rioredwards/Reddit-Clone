@@ -32,3 +32,29 @@ export async function signOutUser() {
 export async function createPost(post) {
     return await client.from('posts').insert(post).single();
 }
+
+export async function uploadImage(bucketName, imagePath, imageFile) {
+    // we can use the storage bucket to upload the image,
+    // then use it to get the public URL
+    const bucket = client.storage.from(bucketName);
+
+    const response = await bucket.upload(imagePath, imageFile, {
+        cacheControl: '3600',
+        // in this case, we will _replace_ any
+        // existing file with same name.
+        upsert: true,
+    });
+
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+        return null;
+    }
+
+    // Construct the URL to this image:
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    // URL Looks like:
+    // https://nwxkvnsiwauieanvbiri.supabase.co/storage/v1/object/public/images/pets/984829079656/Franky.jpeg
+
+    return url;
+}
