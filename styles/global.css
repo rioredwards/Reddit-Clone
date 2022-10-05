@@ -36,6 +36,7 @@ body {
 
 .page-header .logo {
     height: 100%;
+    filter: hue-rotate(200deg);
 }
 
 .page-header .title {
