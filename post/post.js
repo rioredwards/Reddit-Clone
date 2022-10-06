@@ -1,6 +1,7 @@
 /* Imports */
 import '../auth/user.js';
 import { createComment, getPost } from '../fetch-utils.js';
+import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
 const errorDisplay = document.getElementById('error-display');
@@ -36,6 +37,7 @@ window.addEventListener('load', async () => {
         location.assign('/');
     } else {
         displayPost();
+        displayComments();
     }
 });
 
@@ -55,8 +57,8 @@ addCommentForm.addEventListener('submit', async (e) => {
     if (error) {
         displayError();
     } else {
-        console.log(comment);
         post.comments.unshift(comment);
+        displayComments();
         addCommentForm.reset();
     }
 });
@@ -82,5 +84,14 @@ function displayPost() {
         img.src = post.image_url;
         img.alt = `${post.title} image`;
         postSummary.append(img);
+    }
+}
+
+function displayComments() {
+    commentList.innerHTML = '';
+
+    for (const comment of post.comments) {
+        const commentEl = renderComment(comment);
+        commentList.append(commentEl);
     }
 }
