@@ -59,6 +59,12 @@ form button:disabled {
     opacity: 0.5;
 }
 
+form input[type='file'] {
+    padding: 0;
+    border-radius: 0;
+    border: none;
+}
+
 .preview {
     height: 128px;
     width: 128px;
