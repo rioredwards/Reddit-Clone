@@ -30,10 +30,12 @@ postForm.addEventListener('submit', async (e) => {
     const formData = new FormData(postForm);
 
     const imageFile = formData.get('image');
-    const randomFolder = Math.floor(Date.now() * Math.random());
-    const imagePath = `posts/${randomFolder}/${imageFile.name}`;
-
-    const url = await uploadImage('images', imagePath, imageFile);
+    let url = null;
+    if (imageFile.name) {
+        const randomFolder = Math.floor(Date.now() * Math.random());
+        const imagePath = `posts/${randomFolder}/${imageFile.name}`;
+        url = await uploadImage('images', imagePath, imageFile);
+    }
 
     const post = {
         title: formData.get('title'),
