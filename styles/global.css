@@ -40,6 +40,7 @@ button:hover {
 
 .page-header {
     position: fixed;
+    z-index: 1;
     top: 0;
     width: 100vw;
     height: 3.2rem;
@@ -117,17 +118,15 @@ nav {
     border: none;
 }
 
-main {
-    width: 100vw;
-    padding: 1rem;
-}
-
+main,
 footer {
-    width: 100vw;
+    margin-top: 3.2rem;
+    padding: 0 1rem;
 }
 
 .error {
     color: red;
+    justify-self: center;
 }
 
 .hidden {
