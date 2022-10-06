@@ -43,6 +43,20 @@ export async function getPosts(title) {
     return await query;
 }
 
+export async function getPost(id) {
+    return await client
+        .from('posts')
+        .select(
+            `
+            *,
+            comments (*)
+        `
+        )
+        .eq('id', id)
+        .order('created_at', { foreignTable: 'comments', ascending: false })
+        .single();
+}
+
 export async function uploadImage(bucketName, imagePath, imageFile) {
     // we can use the storage bucket to upload the image,
     // then use it to get the public URL

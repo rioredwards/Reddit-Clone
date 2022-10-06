@@ -3,7 +3,7 @@ export function renderPost(post) {
     li.classList.add('post');
 
     const a = document.createElement('a');
-    a.href = `/pet/?id=${post.id}`;
+    a.href = `/post/?id=${post.id}`;
 
     const h2 = document.createElement('h2');
     h2.classList.add('post-title');
