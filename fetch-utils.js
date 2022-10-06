@@ -56,6 +56,10 @@ export async function getPost(id) {
         .single();
 }
 
+export async function createComment(comment) {
+    return await client.from('comments').insert(comment).single();
+}
+
 export async function uploadImage(bucketName, imagePath, imageFile) {
     const bucket = client.storage.from(bucketName);
 
