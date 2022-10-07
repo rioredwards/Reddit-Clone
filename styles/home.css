@@ -40,5 +40,6 @@
     padding-top: 1rem;
     justify-self: center;
     max-height: 20rem;
+    max-width: 100%;
     object-fit: cover;
 }

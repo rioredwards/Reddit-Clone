@@ -33,6 +33,7 @@
     padding-top: 1rem;
     border-top: var(--primary-border);
     max-height: 30rem;
+    max-width: 100%;
     object-fit: cover;
 }
 
