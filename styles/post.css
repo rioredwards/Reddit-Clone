@@ -29,9 +29,9 @@
 
 #post-image {
     grid-area: image;
+    justify-self: center;
     padding-top: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.527);
-    width: 100%;
+    border-top: var(--primary-border);
     max-height: 30rem;
     object-fit: cover;
 }

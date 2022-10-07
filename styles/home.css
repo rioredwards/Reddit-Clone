@@ -9,8 +9,9 @@
 .post {
     padding: 1rem;
     width: 90%;
+    max-width: 50rem;
     min-width: 30rem;
-    max-height: 30rem;
+    max-height: 35rem;
 
     border: var(--primary-border);
     background-color: var(--bg-content-color);
@@ -26,13 +27,18 @@
     color: var(--primary-font);
 }
 
+.post-description {
+    height: min-content;
+}
+
 .post-title {
     font-size: 1.8rem;
     font-family: var(--title-font);
 }
 
 .post-image {
-    width: 100%;
+    padding-top: 1rem;
+    justify-self: center;
     max-height: 20rem;
     object-fit: cover;
 }
