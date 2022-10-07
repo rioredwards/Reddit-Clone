@@ -7,12 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
         <!-- title and favicon -->
-        <title>Blueit - Auth</title>
+        <title>Blueit - Create Post</title>
         <link rel="icon" type="image/x-icon" href="/assets/blueit.png" />
 
         <!-- js -->
         <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-        <script type="module" src="auth.js"></script>
+        <script type="module" src="create-post.js"></script>
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,31 +35,61 @@
                 <img class="logo-icon" src="/assets/blueit.png" alt="logo" />
                 <h1 class="title">blueit</h1>
             </a>
+
+            <nav>
+                <a class="nav-link" id="add-post-link" href="..//">
+                    <button class="nav-btn">Home</button>
+                </a>
+                <a class="nav-link" id="sign-out-link" href="../auth/">
+                    <button class="nav-btn action-btn">Sign Out</button>
+                </a>
+            </nav>
         </header>
 
         <main>
-            <form class="main-form" id="auth-form">
-                <p class="error"></p>
-                <h2 class="title-text"></h2>
+            <form class="main-form" id="create-post-form">
                 <label>
-                    Username
-                    <input name="username" required />
+                    <h2 class="title-text">Create New Post</h2>
+                    <div>Title</div>
+                    <input name="title" required placeholder="Add a title..." />
                 </label>
+
                 <label>
-                    Email
-                    <input type="email" name="email" required />
+                    <div>Description</div>
+                    <textarea
+                        name="description"
+                        required
+                        placeholder="Add a description..."
+                    ></textarea>
                 </label>
+
                 <label>
-                    Password
-                    <input type="password" name="password" required />
+                    <div>Photo</div>
+                    <input
+                        id="image-input"
+                        name="image"
+                        type="file"
+                        placeholder="upload an image..."
+                    />
                 </label>
-                <button></button>
-                <a class="form-link" href=""></a>
+                <img
+                    id="preview"
+                    class="preview"
+                    alt="avatar preview"
+                    src="../assets/photo-placeholder.png"
+                />
+
+                <button id="add-post">Add Post</button>
+                <p class="error" id="error"></p>
             </form>
         </main>
+
         <footer>
             <a href="https://www.flaticon.com/free-icons/reddit" title="reddit icons"
                 >Reddit icons created by Freepik - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/picture" title="picture icons"
+                >Picture icons created by Pixel perfect - Flaticon</a
             >
         </footer>
     </body>

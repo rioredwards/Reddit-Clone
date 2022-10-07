@@ -1,0 +1,7 @@
+.post-list {
+    padding-top: 1rem;
+    width: 100%;
+
+    display: grid;
+    justify-content: center;
+}

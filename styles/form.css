@@ -1,17 +1,17 @@
-form:not(.inline) {
+.main-form {
     width: 100%;
-    margin: auto;
-    max-width: 500px;
-    border: 1px solid;
-    background: var(--offset-color);
-    padding: 20px;
+    margin: 2rem auto;
+    max-width: 30rem;
+    border: var(--primary-border);
+    background: var(--bg-content-color);
+    padding: 2rem;
 
     display: grid;
     gap: 20px;
 }
 
 label {
-    font-family: 'Titillium Web';
+    font-family: var(--title-font);
     font-size: 0.9em;
     font-weight: bold;
     color: var(--label-color);
@@ -20,10 +20,21 @@ label {
     gap: 5px;
 }
 
+.title-text {
+    font-family: var(--title-font);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-link {
+    margin-top: 1rem;
+    color: var(--action-color);
+    text-align: center;
+}
+
 form input,
 form textarea,
-form select,
-form button {
+form select {
     width: 100%;
     font-size: 1.15em;
     padding: 5px;
@@ -32,10 +43,6 @@ form button {
 form input,
 form select {
     height: 35px;
-}
-
-form input[type='file'] {
-    padding: 0;
 }
 
 form select:invalid,
@@ -51,14 +58,73 @@ form textarea {
 }
 
 form button {
-    margin-top: 10px;
-    height: 45px;
+    height: 2.5rem;
     background: var(--action-color);
     border: 0;
     font-weight: bold;
+    font-size: 0.9rem;
     color: white;
 }
 
 form button:disabled {
     opacity: 0.5;
+}
+
+form input[type='file'] {
+    padding: 0;
+    border-radius: 0;
+    border: none;
+}
+
+.preview {
+    height: 128px;
+    width: 128px;
+    object-fit: cover;
+    /* border: 1px solid var(--placeholder-color); */
+    /* background: white; */
+}
+
+#add-post {
+    width: 100%;
+}
+
+#search-form {
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.add-comment-form {
+    margin: 2rem auto 0;
+    width: 90%;
+    min-width: 30rem;
+    height: min-content;
+    padding: 0 0 0 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    background-color: var(--bg-content-color);
+    border: var(--primary-border);
+    border-radius: 1rem;
+}
+
+.add-comment-form input {
+    border: none;
+    height: 2.5rem;
+    height: 95%;
+    padding: 0.2rem 0.5rem;
+}
+
+.add-comment-form input:focus {
+    outline: none;
+    border: none;
+}
+
+.add-comment-form button {
+    height: 2.5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }

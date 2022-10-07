@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <!-- title and favicon -->
+        <title>Blueit - Dive into anything</title>
+        <link rel="icon" type="image/x-icon" href="../assets/blueit.png" />
+
+        <!-- js -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script type="module" src="post.js"></script>
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <!-- add link for page specific css -->
+        <link rel="stylesheet" href="/styles/form.css" />
+        <link rel="stylesheet" href="../styles/post.css" />
+        <link rel="stylesheet" href="../styles/comment.css" />
+    </head>
+
+    <body>
+        <header class="page-header">
+            <a class="logo-section" href="../">
+                <img class="logo-icon" src="../assets/blueit.png" alt="logo" />
+                <h1 class="title">blueit</h1>
+            </a>
+            <nav>
+                <a class="nav-link" id="add-post-link" href="..//">
+                    <button class="nav-btn">Home</button>
+                </a>
+                <a class="nav-link" id="sign-out-link" href="../auth">
+                    <button class="nav-btn action-btn">Sign Out</button>
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="post-container" class="post-container">
+                <div class="post-info" id="post-info">
+                    <h3 id="post-username" class="post-username"></h3>
+                    <span id="post-date" class="post-date"></span>
+                </div>
+                <h1 id="post-title" class="post-title"></h1>
+                <p id="post-description" class="post-description"></p>
+                <div id="post-image-container" class="post-image-container"></div>
+            </section>
+
+            <p id="error-display" class="error"></p>
+
+            <div>
+                <form id="add-comment-form" class="add-comment-form">
+                    <input name="text" id="add-comment-input" placeholder="Add a comment..." />
+                    <button>Send</button>
+                </form>
+            </div>
+
+            <ul id="comment-list" class="comment-list"></ul>
+        </main>
+
+        <footer>
+            <a href="https://www.flaticon.com/free-icons/reddit" title="reddit icons"
+                >Reddit icons created by Freepik - Flaticon</a
+            >
+        </footer>
+    </body>
+</html>
