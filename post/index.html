@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
         <!-- title and favicon -->
-        <title>blueit</title>
-        <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
+        <title>Blueit - Dive into anything</title>
+        <link rel="icon" type="image/x-icon" href="../assets/blueit.png" />
 
         <!-- js -->
         <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -18,52 +18,55 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
         />
 
         <!-- css -->
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/global.css" />
-        <link rel="stylesheet" href="/styles/form.css" />
         <!-- add link for page specific css -->
+        <link rel="stylesheet" href="/styles/form.css" />
         <link rel="stylesheet" href="../styles/post.css" />
     </head>
 
     <body>
         <header class="page-header">
-            <img class="logo" src="/assets/reddit.png" alt="logo" />
-            <p class="title">blueit</p>
+            <a class="logo-section" href="../">
+                <img class="logo-icon" src="../assets/blueit.png" alt="logo" />
+                <h1 class="title">blueit</h1>
+            </a>
             <nav>
-                <a href="../">Home</a>
-                <a id="sign-out-link" href="/auth">Sign Out</a>
+                <a class="nav-link" id="add-post-link" href="..//">
+                    <button class="nav-btn">Home</button>
+                </a>
+                <a class="nav-link" id="sign-out-link" href="../auth">
+                    <button class="nav-btn action-btn">Sign Out</button>
+                </a>
             </nav>
         </header>
 
         <main>
             <section id="post-summary" class="post-summary">
-                <h1 id="post-title"></h1>
-                <p id="post-description"></p>
+                <h1 id="post-title" class="post-title"></h1>
+                <p id="post-description" class="post-description"></p>
             </section>
 
             <p id="error-display" class="error"></p>
 
             <div>
-                <form id="add-comment-form" class="inline">
-                    <input name="text" placeholder="add a comment..." />
+                <form id="add-comment-form" class="add-comment-form">
+                    <input name="text" placeholder="Add a comment..." />
                     <button>Send</button>
                 </form>
             </div>
 
-            <ul id="comment-list"></ul>
+            <ul id="comment-list" class="comment-list"></ul>
         </main>
 
         <footer>
             <a href="https://www.flaticon.com/free-icons/reddit" title="reddit icons"
                 >Reddit icons created by Freepik - Flaticon</a
-            >
-            <a href="https://www.flaticon.com/free-icons/picture" title="picture icons"
-                >Picture icons created by Pixel perfect - Flaticon</a
             >
         </footer>
     </body>

@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
         <!-- title and favicon -->
-        <title>Add Post</title>
-        <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
+        <title>Blueit - Create Post</title>
+        <link rel="icon" type="image/x-icon" href="/assets/blueit.png" />
 
         <!-- js -->
         <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -18,32 +18,40 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
         />
 
         <!-- css -->
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/global.css" />
-        <link rel="stylesheet" href="/styles/form.css" />
         <!-- add link for page specific css -->
+        <link rel="stylesheet" href="/styles/form.css" />
     </head>
 
     <body>
         <header class="page-header">
-            <img class="logo" src="/assets/reddit.png" alt="logo" />
-            <p class="title">blueit</p>
+            <a class="logo-section" href="/">
+                <img class="logo-icon" src="/assets/blueit.png" alt="logo" />
+                <h1 class="title">blueit</h1>
+            </a>
+
             <nav>
-                <a href="../">Home</a>
-                <a id="sign-out-link" href="/">Sign Out</a>
+                <a class="nav-link" id="add-post-link" href="..//">
+                    <button class="nav-btn">Home</button>
+                </a>
+                <a class="nav-link" id="sign-out-link" href="../auth/">
+                    <button class="nav-btn action-btn">Sign Out</button>
+                </a>
             </nav>
         </header>
 
         <main>
-            <form id="create-post-form">
+            <form class="main-form" id="create-post-form">
                 <label>
+                    <h2 class="title-text">Create New Post</h2>
                     <div>Title</div>
-                    <input name="title" required placeholder="Add a title for your post..." />
+                    <input name="title" required placeholder="Add a title..." />
                 </label>
 
                 <label>
@@ -51,7 +59,7 @@
                     <textarea
                         name="description"
                         required
-                        placeholder="Add a description for your post..."
+                        placeholder="Add a description..."
                     ></textarea>
                 </label>
 

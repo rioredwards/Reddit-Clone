@@ -31,21 +31,28 @@
 
     <body>
         <header class="page-header">
-            <div class="logo-section">
+            <a class="logo-section" href="/">
                 <img class="logo-icon" src="/assets/blueit.png" alt="logo" />
                 <h1 class="title">blueit</h1>
-            </div>
+            </a>
             <form id="search-bar" class="search-bar">
                 <button class="search-btn">
                     <img class="search-icon" src="./assets/search.png" alt="search" />
                 </button>
-                <input class="search-input" name="title" placeholder="Search Blueit" />
+                <input
+                    id="search-input"
+                    class="search-input"
+                    name="title"
+                    placeholder="Search Blueit"
+                />
             </form>
             <nav>
-                <button class="nav-link" id="add-post-btn" href="./create-post/">New Post</button>
-                <button class="nav-link action-btn" id="sign-out-btn" href="./auth">
-                    Sign Out
-                </button>
+                <a class="nav-link" id="add-post-link" href="./create-post/">
+                    <button class="nav-btn">New Post</button>
+                </a>
+                <a class="nav-link" id="sign-out-link" href="./auth/">
+                    <button class="nav-btn action-btn">Sign Out</button>
+                </a>
             </nav>
         </header>
 

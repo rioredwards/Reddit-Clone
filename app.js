@@ -6,6 +6,8 @@ import { renderPost } from './render-utils.js';
 
 /* Get DOM Elements */
 // const searchForm = document.getElementById('search-form');
+const searchBar = document.getElementById('search-bar');
+const searchInput = document.getElementById('search-input');
 const errorDisplay = document.getElementById('error');
 const postList = document.getElementById('post-list');
 
@@ -14,6 +16,13 @@ let error = null;
 let posts = [];
 
 /* Events */
+searchInput.addEventListener('focus', () => {
+    searchBar.classList.add('active');
+    searchInput.addEventListener('blur', () => {
+        searchBar.classList.remove('active');
+    });
+});
+
 window.addEventListener('load', async () => {
     const response = await getPosts();
     error = response.error;

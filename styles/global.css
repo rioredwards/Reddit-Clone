@@ -18,8 +18,7 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
     font-family: var(--content-font);
     color: var(--text-primary-color);
     background: var(--bg-primary-color);
@@ -30,7 +29,8 @@ button {
     border-radius: 1rem;
     font-size: 0.9rem;
     border: 1px solid rgba(138, 138, 138, 0.494);
-    min-width: max-content;
+    width: 6rem;
+    font-weight: bold;
     cursor: pointer;
 }
 
@@ -89,6 +89,7 @@ button:hover {
     border: none;
     background: none;
     height: 100%;
+    width: 2rem;
 }
 
 .search-icon {
@@ -106,10 +107,19 @@ button:hover {
     border: none;
 }
 
+.active {
+    box-shadow: 0px 0px 1px 1px rgba(101, 138, 240, 0.857);
+}
+
 nav {
     height: 80%;
     display: flex;
     gap: 1rem;
+}
+
+.nav-btn {
+    height: 100%;
+    width: 6.5rem;
 }
 
 .action-btn {
@@ -118,10 +128,18 @@ nav {
     border: none;
 }
 
-main,
+main {
+    padding: 3.2rem 1rem 0;
+}
+
 footer {
-    margin-top: 3.2rem;
-    padding: 0 1rem;
+    margin-top: 2rem;
+    background-color: var(--bg-content-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
 }
 
 .error {

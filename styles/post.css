@@ -1,59 +1,85 @@
-main {
-    display: grid;
-    grid-template-rows: auto 2px auto 1fr;
-    gap: 10px;
-    justify-content: center;
-}
-
 .post-summary {
-    max-width: 80rem;
-    display: grid;
     padding: 1rem;
-    border-radius: 0.75rem;
-    grid-template-columns: 1fr 3fr;
+    margin: 2rem auto 0;
+    width: 90%;
+    min-width: 30rem;
+    max-height: 35rem;
+
+    display: grid;
+    grid-template-columns: auto 3fr;
     grid-template-rows: auto auto;
     grid-template-areas:
         'title description'
         'image image';
     row-gap: 0.5rem;
     column-gap: 1rem;
-    background: var(--offset-color);
-    box-shadow: var(--box-shadow);
+
+    border: var(--primary-border);
+    background-color: var(--bg-content-color);
+    font-family: var(--primary-font);
 }
 
-#post-title {
+.post-title {
     grid-area: title;
-    margin: 0;
-    align-self: flex-end;
+    padding-right: 1rem;
+    font-size: 1.8rem;
+    font-family: var(--title-font);
+    border-right: var(--primary-border);
 }
 
 #post-image {
     border-top: 1px solid rgba(0, 0, 0, 0.527);
     grid-area: image;
     width: 100%;
-    max-height: 40rem;
+    max-height: 30rem;
     object-fit: cover;
 }
 
-#post-description {
+.post-description {
     grid-area: description;
-    margin: 0;
     align-self: flex-end;
+    height: 60%;
 }
 
-#add-comment-form {
-    margin: 0;
+.add-comment-form {
+    margin: 2rem auto 0;
+    width: 90%;
+    min-width: 30rem;
+    height: min-content;
+    padding: 0 0 0 1rem;
+
     display: grid;
-    grid-template-columns: 1fr 100px;
-    align-items: end;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    background-color: var(--bg-content-color);
+    border: var(--primary-border);
+    border-radius: 1rem;
 }
 
-#add-comment-form input {
-    height: 45px;
+.add-comment-form input {
+    border: none;
+    height: 2.5rem;
+    height: 95%;
+    padding: 0.2rem 0.5rem;
 }
 
-#comment-list li {
-    background: var(--header-background);
-    padding: 20px 25px;
-    border-bottom: 1px solid var(--placeholder-color);
+.add-comment-form button {
+    height: 2.5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.comment-list {
+    margin: 2rem auto 0;
+    width: 90%;
+    min-width: 30rem;
+    height: min-content;
+}
+
+.comment-list li {
+    background-color: var(--bg-content-color);
+
+    padding: 1rem 1.2rem;
+    border-bottom: var(--primary-border);
 }
