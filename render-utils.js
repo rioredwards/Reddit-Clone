@@ -1,28 +1,36 @@
 export function renderPost(post) {
-    const li = document.createElement('li');
-    li.classList.add('post');
+    const container = document.createElement('li');
+    container.classList.add('post');
 
-    const a = document.createElement('a');
-    a.href = `/post/?id=${post.id}`;
+    const link = document.createElement('a');
+    link.href = `/post/?id=${post.id}`;
 
-    const h2 = document.createElement('h2');
-    h2.classList.add('post-title');
-    h2.textContent = post.title;
+    const username = document.createElement('p');
+    username.classList.add('post-username');
+    username.textContent = `u/${post.username}`;
 
-    const p = document.createElement('p');
-    p.classList.add('post-description');
-    p.textContent = post.description;
+    const time = document.createElement('p');
+    time.classList.add('post-username');
+    time.textContent = `Posted: ${post.created_at}`;
 
-    a.append(h2, p);
+    const title = document.createElement('h2');
+    title.classList.add('post-title');
+    title.textContent = post.title;
+
+    const description = document.createElement('p');
+    description.classList.add('post-description');
+    description.textContent = post.description;
+
+    link.append(username, time, title, description);
     if (post.image_url) {
         const img = document.createElement('img');
         img.classList.add('post-image');
         img.src = post.image_url;
-        a.append(img);
+        link.append(img);
     }
-    li.append(a);
+    container.append(link);
 
-    return li;
+    return container;
 }
 
 export function renderComment(comment) {
