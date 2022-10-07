@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
-import { createPost, uploadImage } from '../fetch-utils.js';
+import { createPost, getProfile, uploadImage } from '../fetch-utils.js';
 
 /* Get DOM Elements */
 const postForm = document.getElementById('create-post-form');
@@ -12,6 +12,7 @@ const preview = document.getElementById('preview');
 
 /* State */
 let error = null;
+let profile = null;
 
 /* Events */
 imageInput.addEventListener('change', () => {
@@ -41,6 +42,7 @@ postForm.addEventListener('submit', async (e) => {
         title: formData.get('title'),
         description: formData.get('description'),
         image_url: url,
+        username: profile.username,
     };
 
     const response = await createPost(post);
@@ -64,3 +66,16 @@ function displayError() {
         errorDisplay.textContent = '';
     }
 }
+
+async function pageLoad() {
+    let response = await getProfile();
+    error = response.error;
+    profile = response.data;
+
+    if (error) {
+        displayError();
+        return;
+    }
+}
+
+pageLoad();

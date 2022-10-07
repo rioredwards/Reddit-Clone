@@ -9,18 +9,38 @@ export function getUser() {
     return client.auth.user();
 }
 
-export async function signUpUser(email, password) {
-    return await client.auth.signUp({
-        email,
-        password,
-    });
+export async function getProfile() {
+    const id = getUser().id;
+    return await client.from('profiles').select().eq('id', id).single();
 }
 
-export async function signInUser(email, password) {
-    return await client.auth.signIn({
+export async function signUpUser(userProf) {
+    const email = userProf.email;
+    const password = userProf.password;
+
+    let response = await client.auth.signUp({
         email,
         password,
     });
+    return response;
+}
+
+export async function createProf(userProf) {
+    const username = { username: userProf.username };
+
+    const response = await client.from('profiles').insert(username).single();
+
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+    }
+    return response;
+}
+
+export async function signInUser(userProf) {
+    const email = userProf.email;
+    const password = userProf.password;
+    return await client.auth.signIn({ email, password });
 }
 
 export async function signOutUser() {

@@ -1,5 +1,5 @@
 // import services and utilities
-import { getUser, signInUser, signUpUser } from '../fetch-utils.js';
+import { createProf, getUser, signInUser, signUpUser } from '../fetch-utils.js';
 
 // If on this /auth page but we have a user, it means
 // user probably navigated here by the url.
@@ -48,10 +48,17 @@ authForm.addEventListener('submit', async (e) => {
 
     let response = null;
 
+    const userProf = {
+        username: formData.get('username'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+    };
+
     if (isSignIn) {
-        response = await signInUser(formData.get('email'), formData.get('password'));
+        response = await signInUser(userProf);
     } else {
-        response = await signUpUser(formData.get('email'), formData.get('password'));
+        response = await signUpUser(userProf);
+        response = await createProf(userProf);
     }
 
     const error = response.error;

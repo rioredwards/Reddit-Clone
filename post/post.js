@@ -54,6 +54,11 @@ addCommentForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(addCommentForm);
+
+    if (formData.get('text') === '') {
+        return;
+    }
+
     const commentInsert = {
         post_id: post.id,
         text: formData.get('text'),
