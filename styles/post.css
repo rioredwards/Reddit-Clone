@@ -28,8 +28,9 @@
 }
 
 #post-image {
-    border-top: 1px solid rgba(0, 0, 0, 0.527);
     grid-area: image;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.527);
     width: 100%;
     max-height: 30rem;
     object-fit: cover;
@@ -62,6 +63,11 @@
     height: 2.5rem;
     height: 95%;
     padding: 0.2rem 0.5rem;
+}
+
+.add-comment-form input:focus {
+    outline: none;
+    border: none;
 }
 
 .add-comment-form button {

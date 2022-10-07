@@ -4,6 +4,8 @@ import { createComment, getPost } from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
+const commentInput = document.getElementById('add-comment-input');
+const commentForm = document.getElementById('add-comment-form');
 const errorDisplay = document.getElementById('error-display');
 const postSummary = document.getElementById('post-summary');
 const postTitle = document.getElementById('post-title');
@@ -16,6 +18,13 @@ let error = null;
 let post = null;
 
 /* Events */
+commentInput.addEventListener('focus', () => {
+    commentForm.classList.add('active');
+    commentInput.addEventListener('blur', () => {
+        commentForm.classList.remove('active');
+    });
+});
+
 window.addEventListener('load', async () => {
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');

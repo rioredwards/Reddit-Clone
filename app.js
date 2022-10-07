@@ -23,6 +23,23 @@ searchInput.addEventListener('focus', () => {
     });
 });
 
+searchBar.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(searchBar);
+    const title = formData.get('title');
+
+    const response = await getPosts(title);
+    error = response.error;
+
+    if (error) {
+        displayError();
+    } else {
+        posts = response.data;
+        displayPosts();
+    }
+});
+
 window.addEventListener('load', async () => {
     const response = await getPosts();
     error = response.error;

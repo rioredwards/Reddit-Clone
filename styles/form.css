@@ -84,6 +84,10 @@ form input[type='file'] {
     /* background: white; */
 }
 
+#add-post {
+    width: 100%;
+}
+
 #search-form {
     justify-self: center;
     align-self: center;
