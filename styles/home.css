@@ -1,45 +1,7 @@
 .post-list {
     padding-top: 2rem;
+    width: 100%;
 
     display: grid;
-    justify-items: center;
-    gap: 1rem;
-}
-
-.post {
-    padding: 1rem;
-    width: 90%;
-    max-width: 50rem;
-    min-width: 30rem;
-    max-height: 35rem;
-
-    border: var(--primary-border);
-    background-color: var(--bg-content-color);
-
-    font-family: var(--primary-font);
-}
-
-.post a {
-    display: grid;
-    grid-template-rows: 2rem auto auto;
-    row-gap: 1rem;
-
-    color: var(--primary-font);
-}
-
-.post-description {
-    height: min-content;
-}
-
-.post-title {
-    font-size: 1.8rem;
-    font-family: var(--title-font);
-}
-
-.post-image {
-    padding-top: 1rem;
-    justify-self: center;
-    max-height: 20rem;
-    max-width: 100%;
-    object-fit: cover;
+    justify-content: center;
 }

@@ -4,12 +4,15 @@ import { createComment, getPost } from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
+const postSummary = document.getElementById('post-container');
+
+const postUsername = document.getElementById('post-username');
+const postDate = document.getElementById('post-date');
+const postTitle = document.getElementById('post-title');
+const postDescription = document.getElementById('post-description');
 const commentInput = document.getElementById('add-comment-input');
 const commentForm = document.getElementById('add-comment-form');
 const errorDisplay = document.getElementById('error-display');
-const postSummary = document.getElementById('post-summary');
-const postTitle = document.getElementById('post-title');
-const postDescription = document.getElementById('post-description');
 const addCommentForm = document.getElementById('add-comment-form');
 const commentList = document.getElementById('comment-list');
 
@@ -90,6 +93,8 @@ function displayError() {
 }
 
 function displayPost() {
+    postDate.textContent = `Posted on: ${post.created_at}`;
+    postUsername.textContent = `by: u/${post.username}`;
     postTitle.textContent = post.title;
     postDescription.textContent = post.description;
     if (post.image_url) {

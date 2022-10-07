@@ -4,14 +4,15 @@ export function renderPost(post) {
 
     const link = document.createElement('a');
     link.href = `/post/?id=${post.id}`;
+    link.classList.add('post-container');
 
     const username = document.createElement('p');
     username.classList.add('post-username');
     username.textContent = `u/${post.username}`;
 
-    const time = document.createElement('p');
-    time.classList.add('post-username');
-    time.textContent = `Posted: ${post.created_at}`;
+    const date = document.createElement('p');
+    date.classList.add('post-date');
+    date.textContent = `Posted: ${post.created_at}`;
 
     const title = document.createElement('h2');
     title.classList.add('post-title');
@@ -21,9 +22,10 @@ export function renderPost(post) {
     description.classList.add('post-description');
     description.textContent = post.description;
 
-    link.append(username, time, title, description);
+    link.append(username, date, title, description);
     if (post.image_url) {
         const img = document.createElement('img');
+        img.id = 'post-image';
         img.classList.add('post-image');
         img.src = post.image_url;
         link.append(img);
