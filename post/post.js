@@ -1,15 +1,15 @@
 /* Imports */
 import '../auth/user.js';
-import { createComment, getPost } from '../fetch-utils.js';
+import { createComment, getPost, getProfile } from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
-const postSummary = document.getElementById('post-container');
 
 const postUsername = document.getElementById('post-username');
 const postDate = document.getElementById('post-date');
 const postTitle = document.getElementById('post-title');
 const postDescription = document.getElementById('post-description');
+const postImageContainer = document.getElementById('post-image-container');
 const commentInput = document.getElementById('add-comment-input');
 const commentForm = document.getElementById('add-comment-form');
 const errorDisplay = document.getElementById('error-display');
@@ -19,6 +19,7 @@ const commentList = document.getElementById('comment-list');
 /* State */
 let error = null;
 let post = null;
+let profile = null;
 
 /* Events */
 commentInput.addEventListener('focus', () => {
@@ -65,6 +66,7 @@ addCommentForm.addEventListener('submit', async (e) => {
     const commentInsert = {
         post_id: post.id,
         text: formData.get('text'),
+        username: profile.username,
     };
     const response = await createComment(commentInsert);
 
@@ -93,8 +95,8 @@ function displayError() {
 }
 
 function displayPost() {
-    postDate.textContent = `Posted on: ${post.created_at}`;
     postUsername.textContent = `by: u/${post.username}`;
+    postDate.textContent = `Posted on: ${post.created_at}`;
     postTitle.textContent = post.title;
     postDescription.textContent = post.description;
     if (post.image_url) {
@@ -102,7 +104,7 @@ function displayPost() {
         img.id = 'post-image';
         img.src = post.image_url;
         img.alt = `${post.title} image`;
-        postSummary.append(img);
+        postImageContainer.append(img);
     }
 }
 
@@ -114,3 +116,16 @@ function displayComments() {
         commentList.append(commentEl);
     }
 }
+
+async function pageLoad() {
+    let response = await getProfile();
+    error = response.error;
+    profile = response.data;
+
+    if (error) {
+        displayError();
+        return;
+    }
+}
+
+pageLoad();

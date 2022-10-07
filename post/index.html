@@ -28,6 +28,7 @@
         <!-- add link for page specific css -->
         <link rel="stylesheet" href="/styles/form.css" />
         <link rel="stylesheet" href="../styles/post.css" />
+        <link rel="stylesheet" href="../styles/comment.css" />
     </head>
 
     <body>
@@ -48,10 +49,13 @@
 
         <main>
             <section id="post-container" class="post-container">
-                <p id="post-username" class="post-username"></p>
-                <p id="post-date" class="post-date"></p>
+                <div class="post-info" id="post-info">
+                    <h3 id="post-username" class="post-username"></h3>
+                    <span id="post-date" class="post-date"></span>
+                </div>
                 <h1 id="post-title" class="post-title"></h1>
                 <p id="post-description" class="post-description"></p>
+                <div id="post-image-container" class="post-image-container"></div>
             </section>
 
             <p id="error-display" class="error"></p>

@@ -94,3 +94,37 @@ form input[type='file'] {
     display: flex;
     gap: 1rem;
 }
+
+.add-comment-form {
+    margin: 2rem auto 0;
+    width: 90%;
+    min-width: 30rem;
+    height: min-content;
+    padding: 0 0 0 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    background-color: var(--bg-content-color);
+    border: var(--primary-border);
+    border-radius: 1rem;
+}
+
+.add-comment-form input {
+    border: none;
+    height: 2.5rem;
+    height: 95%;
+    padding: 0.2rem 0.5rem;
+}
+
+.add-comment-form input:focus {
+    outline: none;
+    border: none;
+}
+
+.add-comment-form button {
+    height: 2.5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
