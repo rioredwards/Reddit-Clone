@@ -11,7 +11,7 @@ export function renderPost(post) {
 
     const username = document.createElement('h3');
     username.classList.add('post-username');
-    username.textContent = `u/${post.username}`;
+    username.textContent = `u/${post.user_name}`;
 
     const date = document.createElement('span');
     date.classList.add('post-date');
