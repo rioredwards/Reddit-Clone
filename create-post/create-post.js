@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
-import { createPost, getProfile, uploadImage } from '../fetch-utils.js';
+import { createPost, getProfile, getUser, uploadImage } from '../fetch-utils.js';
 
 /* Get DOM Elements */
 const postForm = document.getElementById('create-post-form');
@@ -11,8 +11,21 @@ const imageInput = document.getElementById('image-input');
 const preview = document.getElementById('preview');
 
 /* State */
+const user = getUser();
+
 let error = null;
 let profile = null;
+
+// > Load Profile
+window.addEventListener('load', async () => {
+    const response = await getProfile(user.id);
+    error = response.error;
+    profile = response.data;
+
+    if (error) {
+        displayError();
+    }
+});
 
 /* Events */
 imageInput.addEventListener('change', () => {
@@ -42,7 +55,7 @@ postForm.addEventListener('submit', async (e) => {
         title: formData.get('title'),
         description: formData.get('description'),
         image_url: url,
-        username: profile.username,
+        user_name: profile.user_name,
     };
 
     const response = await createPost(post);
@@ -52,7 +65,7 @@ postForm.addEventListener('submit', async (e) => {
     if (error) {
         displayError();
     } else {
-        location.assign('/');
+        // location.assign('/');
     }
 });
 
@@ -68,13 +81,13 @@ function displayError() {
 }
 
 async function pageLoad() {
-    let response = await getProfile();
+    let response = await getProfile(user.id);
     error = response.error;
     profile = response.data;
 
     if (error) {
+        addBtn.disabled = false;
         displayError();
-        return;
     }
 }
 

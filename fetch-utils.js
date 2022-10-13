@@ -4,50 +4,29 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
-
 export function getUser() {
     return client.auth.user();
 }
 
-export async function getProfile() {
-    const id = getUser().id;
-    return await client.from('profiles').select().eq('id', id).single();
-}
-
-export async function signUpUser(userProf) {
-    const email = userProf.email;
-    const password = userProf.password;
-
-    let response = await client.auth.signUp({
+export async function signUpUser(email, password) {
+    return await client.auth.signUp({
         email,
         password,
     });
-    return response;
 }
 
-export async function createProf(userProf) {
-    const username = { username: userProf.username };
-
-    const response = await client.from('profiles').insert(username).single();
-
-    if (response.error) {
-        // eslint-disable-next-line no-console
-        console.log(response.error);
-    }
-    return response;
-}
-
-export async function signInUser(userProf) {
-    const email = userProf.email;
-    const password = userProf.password;
-    return await client.auth.signIn({ email, password });
+export async function signInUser(email, password) {
+    return await client.auth.signIn({
+        email,
+        password,
+    });
 }
 
 export async function signOutUser() {
     return await client.auth.signOut();
 }
 
-/* Data functions */
+/* Post functions */
 export async function createPost(post) {
     return await client.from('posts').insert(post).single();
 }
@@ -71,8 +50,8 @@ export async function getPost(id) {
         .from('posts')
         .select(
             `
-            *,
-            comments (*)
+        *,
+        comments (*)
         `
         )
         .eq('id', id)
@@ -80,6 +59,7 @@ export async function getPost(id) {
         .single();
 }
 
+/* Comment functions */
 export async function createComment(comment) {
     return await client.from('comments').insert(comment).single();
 }
@@ -102,3 +82,33 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
 
     return url;
 }
+
+/* user profiles */
+export async function updateProfile(profile) {
+    const response = await client.from('profiles').upsert(profile).single();
+    return response;
+}
+
+export async function getProfile(id) {
+    const response = await client.from('profiles').select('*').eq('id', id).maybeSingle();
+    return response;
+}
+
+/* 
+export async function getProfile() {
+    const id = getUser().id;
+    return await client.from('profiles').select().eq('id', id).single();
+} 
+
+export async function createProf(userProf) {
+    const username = { username: userProf.username };
+    
+    const response = await client.from('profiles').insert(username).single();
+    
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+    }
+    return response;
+}
+*/

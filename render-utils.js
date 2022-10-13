@@ -53,7 +53,7 @@ export function renderComment(comment) {
     commentHeader.classList.add('comment-header');
 
     const commentUsername = document.createElement('h3');
-    commentUsername.textContent = `u/${comment.username}`;
+    commentUsername.textContent = `u/${comment.user_name}`;
     commentUsername.classList.add('comment-username');
 
     const commentDate = document.createElement('span');

@@ -1,6 +1,6 @@
 /* Imports */
 import '../auth/user.js';
-import { createComment, deletePost, getPost, getProfile } from '../fetch-utils.js';
+import { createComment, deletePost, getPost, getProfile, getUser } from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
@@ -18,6 +18,8 @@ const commentList = document.getElementById('comment-list');
 const deletePostBtn = document.getElementById('delete-post-btn');
 
 /* State */
+const user = getUser();
+
 let error = null;
 let post = null;
 let profile = null;
@@ -37,8 +39,7 @@ deletePostBtn.addEventListener('click', async () => {
     if (error) {
         displayError();
     } else {
-        // location.assign('/');
-        console.log(`Deleting: ${post.id}`);
+        location.assign('/');
     }
 });
 
@@ -79,11 +80,10 @@ addCommentForm.addEventListener('submit', async (e) => {
     const commentInsert = {
         post_id: post.id,
         text: formData.get('text'),
-        username: profile.username,
+        user_name: profile.user_name,
     };
 
     const response = await createComment(commentInsert);
-
     error = response.error;
     const comment = response.data;
 
@@ -109,7 +109,7 @@ function displayError() {
 }
 
 function displayPost() {
-    postUsername.textContent = `by: u/${post.username}`;
+    postUsername.textContent = `by: u/${post.user_name}`;
     postDate.textContent = `Posted on: ${post.created_at}`;
     postTitle.textContent = post.title;
     postDescription.textContent = post.description;
@@ -132,13 +132,12 @@ function displayComments() {
 }
 
 async function pageLoad() {
-    let response = await getProfile();
+    let response = await getProfile(user.id);
     error = response.error;
     profile = response.data;
 
     if (error) {
         displayError();
-        return;
     }
 }
 
