@@ -1,6 +1,6 @@
 /* Imports */
 import '../auth/user.js';
-import { createComment, getPost, getProfile } from '../fetch-utils.js';
+import { createComment, deletePost, getPost, getProfile } from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
@@ -15,6 +15,7 @@ const commentForm = document.getElementById('add-comment-form');
 const errorDisplay = document.getElementById('error-display');
 const addCommentForm = document.getElementById('add-comment-form');
 const commentList = document.getElementById('comment-list');
+const deletePostBtn = document.getElementById('delete-post-btn');
 
 /* State */
 let error = null;
@@ -27,6 +28,18 @@ commentInput.addEventListener('focus', () => {
     commentInput.addEventListener('blur', () => {
         commentForm.classList.remove('active');
     });
+});
+
+deletePostBtn.addEventListener('click', async () => {
+    const response = await deletePost(post.id);
+    error = response.error;
+
+    if (error) {
+        displayError();
+    } else {
+        // location.assign('/');
+        console.log(`Deleting: ${post.id}`);
+    }
 });
 
 window.addEventListener('load', async () => {
@@ -68,6 +81,7 @@ addCommentForm.addEventListener('submit', async (e) => {
         text: formData.get('text'),
         username: profile.username,
     };
+
     const response = await createComment(commentInsert);
 
     error = response.error;

@@ -11,7 +11,10 @@
         <link rel="icon" type="image/x-icon" href="../assets/blueit.png" />
 
         <!-- js -->
-        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
         <script type="module" src="post.js"></script>
 
         <!-- fonts -->
@@ -52,6 +55,7 @@
                 <div class="post-info" id="post-info">
                     <h3 id="post-username" class="post-username"></h3>
                     <span id="post-date" class="post-date"></span>
+                    <button id="delete-post-btn" class="delete-post-btn">x</button>
                 </div>
                 <h1 id="post-title" class="post-title"></h1>
                 <p id="post-description" class="post-description"></p>

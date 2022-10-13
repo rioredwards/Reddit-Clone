@@ -26,11 +26,20 @@
 .post-info {
     grid-area: info;
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
 .post-date {
     grid-area: date;
+}
+
+.delete-post-btn {
+    font-size: 0.7rem;
+    padding: 0;
+    margin-left: auto;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 .post-title {
